@@ -18,7 +18,7 @@ public class VeDoThi implements ActionListener{
     JFrame f;
     JTextField tf1, tf2, tf3, tf4;
     JLabel lb1, lb2, lb3, lb4;
-    JButton bt1, bt2;
+    JButton bt1, bt2, bt3;
     
     public VeDoThi(){
         
@@ -52,11 +52,14 @@ public class VeDoThi implements ActionListener{
         tf4 = new JTextField(10);
         tf4.setBounds(90,155,100,25);
      
-        bt1 = new JButton("Ve do thi");
+        bt1 = new JButton("Do thi cot");
         bt1.setBounds(20,200,100,25);
         
-        bt2 = new JButton("Thoat");   
-        bt2.setBounds(20,245,100,25);
+        bt2 = new JButton("Do thi tron");
+        bt2.setBounds(140,200,100,25);
+        
+        bt3 = new JButton("Thoat");   
+        bt3.setBounds(20,245,100,25);
 
         
         f.add(lb1);
@@ -69,9 +72,12 @@ public class VeDoThi implements ActionListener{
         f.add(tf4);
         f.add(bt1);
         f.add(bt2);
+        f.add(bt3);
         
         bt1.addActionListener(this);
         bt2.addActionListener(this);
+        bt3.addActionListener(this);
+        
     } 
 
     @Override
@@ -94,7 +100,7 @@ public class VeDoThi implements ActionListener{
                 dothi.setSize(380,350);
                 dothi.setVisible(true);
  
-                DoThi d = new DoThi(30, (int) Math.round(250-height1),50,height1,
+                DoThiCot d = new DoThiCot(30, (int) Math.round(250-height1),50,height1,
                                     110,(int) Math.round(250-height2),50,height2,
                                     190,(int) Math.round(250-height3),50,height3,
                                     270,(int) Math.round(250-height4),50,height4,
@@ -109,6 +115,41 @@ public class VeDoThi implements ActionListener{
         }
         
         if (e.getSource()==bt2){
+            
+            if (isNumeric(tf1.getText())==false||isNumeric(tf2.getText())==false||
+                isNumeric(tf3.getText())==false||isNumeric(tf4.getText())==false){
+                
+                JOptionPane.showMessageDialog(f, "Khong xac dinh duoc du lieu. Moi ban nhap lai!");
+            }
+            else{
+                double a1 = Double.parseDouble(tf1.getText());
+                double a2 = Double.parseDouble(tf2.getText());
+                double a3 = Double.parseDouble(tf3.getText());
+                double a4 = Double.parseDouble(tf4.getText());
+                
+                double sum = a1 + a2 + a3 + a4;
+                
+                a1 = a1/sum * 360;
+                a2 = a2/sum * 360;
+                a3 = a3/sum * 360;
+                a4 = a4/sum * 360;
+                
+                JFrame dothi = new JFrame("Do thi");
+                dothi.setSize(380,350);
+                dothi.setVisible(true);
+ 
+                DoThiTron d = new DoThiTron(80,30,200,200,0,a1,a1,a2,a1+a2,a3,a1+a2+a3,a4,                                            
+                                            30,270,
+                                            110,270,
+                                            190,270,
+                                            270,270);
+                
+                dothi.add(d);
+   
+            }
+        }
+        
+        if (e.getSource()==bt3){
             System.exit(0);
         }
     }

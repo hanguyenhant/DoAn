@@ -12,7 +12,7 @@ package DoAnHa;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
-public class DoThi extends Canvas{
+public class DoThiCot extends Canvas{
     
     double x1,y1,w1,h1;
     double x2,y2,w2,h2;
@@ -23,7 +23,7 @@ public class DoThi extends Canvas{
     int sx3,sy3;
     int sx4,sy4;
   
-    public DoThi(double x1,double y1,double w1,double h1,
+    public DoThiCot(double x1,double y1,double w1,double h1,
                double x2,double y2,double w2,double h2,
                double x3,double y3,double w3,double h3,
                double x4,double y4,double w4,double h4,
